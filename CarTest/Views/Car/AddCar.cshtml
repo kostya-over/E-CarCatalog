@@ -1,0 +1,86 @@
+﻿@model CarTest.Models.CarViewModel
+
+@{
+    ViewData["Title"] = "Add Car";
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <form asp-action="AddCar" class="addEditForm" enctype="multipart/form-data" method="post">
+                <h2 class="adminPanelTitle">Add Car</h2>
+                <div class="form-group">
+                    <label asp-for="Brand" class="control-label"></label>
+                    <input asp-for="Brand" class="form-control" placeholder="Enter brand of car"/>
+                    <span asp-validation-for="Brand" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Model" class="control-label"></label>
+                    <input asp-for="Model" class="form-control" placeholder="Enter name of model"/>
+                    <span asp-validation-for="Model" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Year" class="control-label"></label>
+                    <input asp-for="Year" class="form-control" placeholder="Enter year of manufacture"/>
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Range" class="control-label"></label>
+                    <input asp-for="Range" class="form-control" placeholder="Enter driving range of the car"/>
+                    <span asp-validation-for="Range" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" placeholder="Enter price"/>
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BatteryCapacity" class="control-label"></label>
+                    <input asp-for="BatteryCapacity" class="form-control" placeholder="Enter battery capacity"/>
+                    <span asp-validation-for="BatteryCapacity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MotorPower" class="control-label"></label>
+                    <input asp-for="MotorPower" class="form-control" placeholder="Enter motor power"/>
+                    <span asp-validation-for="MotorPower" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TopSpeed" class="control-label"></label>
+                    <input asp-for="TopSpeed" class="form-control" placeholder="Enter top speed"/>
+                    <span asp-validation-for="TopSpeed" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Acceleration" class="control-label"></label>
+                    <input asp-for="Acceleration" class="form-control" placeholder="Enter acceleration"/>
+                    <span asp-validation-for="Acceleration" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ChargingTime" class="control-label"></label>
+                    <input asp-for="ChargingTime" class="form-control" placeholder="Enter the charging time until fully charged"/>
+                    <span asp-validation-for="ChargingTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BodyType" class="control-label"></label>
+                    <select id="bodyType" name="bodyType" class="form-select">
+                        <option value="Sedan">Sedan</option>
+                        <option value="Hatchback">Hatchback</option>
+                        <option value="SUV">SUV</option>
+                        <option value="Crossover">Crossover</option>
+                        <option value="Coupe">Coupe</option>
+                        <option value="Minivan">Minivan</option>
+                        <option value="Van">Van</option>
+                        <option value="Coupe SUV">Coupe SUV</option>
+                    </select>
+                    <span asp-validation-for="BodyType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photos" class="control-label"></label>
+                    <input asp-for="Photos" type="file" accept="image/*" class="form-control" multiple/>
+                    <span asp-validation-for="Photos" class="text-danger"></span>
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-login">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

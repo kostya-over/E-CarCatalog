@@ -1,0 +1,149 @@
+﻿@model IEnumerable<CarTest.Models.Car>
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<IdentityUser> userManager;
+@{
+    ViewData["Title"] = "Admin Panel";
+    ViewData["UsersAmount"] = userManager.Users.Count();
+    ViewData["CarsAmount"] = Model.Count();
+    ViewData["CarsTotalPrice"] = Convert.ToDecimal(Model.Sum(c => c.Price)).ToString("C");
+}
+
+@* <h2 class="adminPanelTitle">Admin Panel</h2> *@
+
+<div class="row mt-3">
+    <div class="col-4">
+        <div class="card infoCard mb-3"> 
+            <div class="card-body">
+                <h3 class="card-title">@ViewData["Carsamount"]</h3>
+                <p class="card-text">Cars in database</p>
+            </div>
+            <div class="position-absolute bottom-0 end-0 p-3">
+                <img src="~/icons/carAmount.svg" alt="car amount" class="svgCard">
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-4">
+        <div class="card infoCard mb-3"> 
+            <div class="card-body">
+                <h3 class="card-title">@ViewData["CarsTotalPrice"]</h3>
+                <p class="card-text">The price of all cars</p>
+            </div>
+            <div class="position-absolute bottom-0 end-0 p-3">
+                <img src="~/icons/totalPrice.svg" alt="totalPrice" class="svgCard">
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-4">
+        <div class="card infoCard mb-3"> 
+            <div class="card-body">
+                <h3 class="card-title">@ViewData["UsersAmount"]</h3>
+                <p class="card-text">Registered users</p>
+            </div>
+            <div class="position-absolute bottom-0 end-0 p-3">
+                <img src="~/icons/userAmount.svg" alt="userAmount" class="svgCard">
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="container tableContainer">
+    <p>
+        <a class="btn btnAdd" asp-action="AddCar">
+            ADD
+        </a>
+    </p>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                Brand
+            </th>
+            <th>
+                Model
+            </th>
+            <th>
+                Year
+            </th>
+            <th>
+                Range
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Body Type
+            </th>
+            <th>
+                Battery
+            </th>
+            <th>
+                Motor power
+            </th>
+            <th>
+                Top speed
+            </th>
+            <th>
+                Acceleration
+            </th>
+            <th>
+                Charging time
+            </th>
+            <th>
+                Action buttons
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => car.Brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => car.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => car.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => car.Range)
+                </td>
+                <td>
+                   $ @Html.DisplayFor(modelItem => car.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => car.BodyType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => car.BatteryCapacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => car.MotorPower)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => car.TopSpeed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => car.Acceleration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => car.ChargingTime)
+                </td>
+                <td class="tableBtns">
+                    <a asp-action="EditCar" asp-route-id="@car.Id">
+                        <img src="~/icons/edit.svg" alt="editIcon">
+                    </a>
+                    <a asp-action="DeleteCar" asp-route-id="@car.Id">
+                        <img src="~/icons/delete.svg" alt="deleteIcon">
+                    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

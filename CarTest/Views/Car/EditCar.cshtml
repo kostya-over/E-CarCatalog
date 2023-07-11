@@ -1,0 +1,85 @@
+﻿@model CarTest.Models.Car;
+
+@{
+    ViewData["Title"] = "Edit Car";
+}
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <form asp-action="EditCar" class="addEditForm" asp-route-id="@Model.Id" method="post" enctype="multipart/form-data">
+                <h2 class="adminPanelTitle">Edit Car</h2>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Brand" class="control-label"></label>
+                    <input asp-for="Brand" class="form-control" />
+                    <span asp-validation-for="Brand" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Model" class="control-label"></label>
+                    <input asp-for="Model" class="form-control" />
+                    <span asp-validation-for="Model" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Year" class="control-label"></label>
+                    <input asp-for="Year" class="form-control" />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Range" class="control-label"></label>
+                    <input asp-for="Range" class="form-control" />
+                    <span asp-validation-for="Range" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BatteryCapacity" class="control-label"></label>
+                    <input asp-for="BatteryCapacity" class="form-control" />
+                    <span asp-validation-for="BatteryCapacity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MotorPower" class="control-label"></label>
+                    <input asp-for="MotorPower" class="form-control" />
+                    <span asp-validation-for="MotorPower" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TopSpeed" class="control-label"></label>
+                    <input asp-for="TopSpeed" class="form-control" />
+                    <span asp-validation-for="TopSpeed" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Acceleration" class="control-label"></label>
+                    <input asp-for="Acceleration" class="form-control" />
+                    <span asp-validation-for="Acceleration" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ChargingTime" class="control-label"></label>
+                    <input asp-for="ChargingTime" class="form-control" />
+                    <span asp-validation-for="ChargingTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BodyType" class="control-label"></label>
+                    <input asp-for="BodyType" class="form-control" />
+                    <span asp-validation-for="BodyType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photos" class="control-label"></label>
+                    <input asp-for="Photos" type="file" accept="image/*" class="form-control" multiple />
+                    <span asp-validation-for="Photos" class="text-danger"></span>
+                    @for (int i = 0; i < Model.Photos.Count; i++)
+                    {
+                        <img asp-for="Photos" src="~/images/@Url.Content(Model.Photos[i].Uri)" height="200" />
+                    }                    
+                </div>
+                <div class="form-group">
+                    <button type="submit" value="Save" class="btn btn-login">SAVE</button>
+                    <a asp-action="AdminPanel" class="btn btn-loginReversed">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+﻿@using System.Globalization
+@model CarTest.Models.Car
+
+@{
+  ViewData["Title"] = "Car Info";
+  string currentItem = "";
+  string ariaCurrent = "";
+  Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("EN-us");
+}
+
+<div class="row infoContainer">
+  <div class="col-md-6">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-keyboard="true">
+      <div class="carousel-indicators">
+        @for (int i = 0; i < Model.Photos.Count; i++)
+        {
+          if (i == 0)
+          {
+            currentItem = "active";
+            ariaCurrent = "true";
+          }
+          else
+          {
+            currentItem = "";
+            ariaCurrent = "";
+          }
+          
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" class="@currentItem" aria-current="@ariaCurrent" aria-label="Slide @i+1"></button>
+        }
+      </div>
+      <div class="carousel-inner">
+        @for (int i = 0; i < Model.Photos.Count; i++)
+        {
+          if (i == 0)
+            currentItem = "active";
+          else
+            currentItem = "";
+
+          <div class="carousel-item @currentItem">
+            <img src="~/images/@Model.Photos[i].Uri" class="d-block w-100" alt="Photo@i">
+          </div>
+        }
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h2>@Model.Brand @Model.Model</h2>
+    <p><strong>Year:</strong> @Model.Year</p>
+    <p><strong>Price:</strong> @Model.Price.ToString("C")</p>
+    <p><strong>Body Type:</strong> @Model.BodyType</p>
+    <div class="infoBlock">
+      <img src="~/icons/range.svg" alt="Range Icon">
+      <p>Range</p>
+      <h5>@Model.Range miles</h5>
+    </div>
+    <div class="infoBlock">
+      <img src="~/icons/battery.svg" alt="Battery Icon">
+      <p>Battery</p>
+      <h5>@Model.BatteryCapacity kWh</h5>
+    </div>
+    <div class="infoBlock">
+      <img src="~/icons/motorPower.svg" alt="Motor Icon">
+      <p>Motor power</p>
+      <h5>@Model.MotorPower kW</h5>
+    </div>
+    <div class="infoBlock">
+      <img src="~/icons/speed.svg" alt="Top Speed Icon">
+      <p>Top speed</p>
+      <h5>@Model.TopSpeed mph</h5>
+    </div>
+    <div class="infoBlock">
+      <img src="~/icons/sports-car.svg" alt="Acceleration Icon">
+      <p>Acceleration</p>
+      <h5>@Model.Acceleration seconds</h5>
+    </div>
+    <div class="infoBlock">
+      <img src="~/icons/time-2.svg" alt="Charging Time">
+      <p>Charging time</p>
+      <h5>@Model.ChargingTime hours</h5>
+    </div>
+  </div>
+</div>
