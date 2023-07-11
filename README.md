@@ -12,7 +12,9 @@ The project is developed using ASP.NET Core MVC, ensuring a robust and scalable 
 *Azure Sql Database*<br>
 *Identity Core*<br>
 
-The project is adapted to work on a local machine.
+The project is adapted to work on a local machine.\
 An example of a catalog page.
 ![image](https://github.com/kostya-over/E-CarCatalog/assets/99737062/90bda577-fe22-4416-94e3-f7a52592c48d)
 
+An example of an admin panel.
+![image](https://github.com/kostya-over/E-CarCatalog/assets/99737062/b87c54e1-bcd2-454b-841e-f1e6c4a0d76a)
